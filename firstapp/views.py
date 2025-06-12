@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import CountryForm, ProvinceForm
 # Create your views here.
 def demo(request):
     #print ("Hello world")
@@ -13,6 +14,17 @@ def country(request):
     }
     return render(request,"country.html",context)
 
+
+def add_country(request):
+    add_country_form = CountryForm()
+    context={
+        "form": add_country_form,
+        "title": "country | Add page"
+    }
+    return render(request,"add_country.html", context)
+
+
+
 def provience(request):
     context={
         "province_name":"provience no. one",
@@ -20,3 +32,13 @@ def provience(request):
 
     }
     return render(request,"provience.html",context)
+
+
+
+def add_province(request):
+    add_province_form = ProvinceForm()
+    context={
+        "form": add_province_form,
+        "title": "province | Add pa=ge"
+    }
+    return render(request,"add_provience.html",context)
